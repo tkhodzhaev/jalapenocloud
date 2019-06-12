@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+
+  <siteMapNode>
+
+    <siteMapNode url="~/Default.aspx" title="Main"  description="" />
+    <siteMapNode url="~/Settings.aspx" title="Settings"  description="" />
+    <siteMapNode url="~/Statistics.aspx" title="Statistics"  description="" />
+    <siteMapNode url="~/Administrators.aspx" title="Administrators"  description="" />
+    <siteMapNode url="~/Users.aspx" title="Users"  description="" />
+    <siteMapNode url="~/Clients.aspx" title="Clients"  description="" />
+    <siteMapNode url="~/Spammers.aspx" title="Spammers"  description="" />
+    <siteMapNode url="~/SmsHashes.aspx" title="SMS Hashes"  description="" />
+    <siteMapNode url="~/Logs.aspx" title="Logs"  description="" />
+
+  </siteMapNode>
+
+</siteMap>

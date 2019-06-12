@@ -1,0 +1,61 @@
+﻿<?xml version="1.0"?>
+<configuration>
+  <connectionStrings>
+    <add name="Default" connectionString="Server=localhost;Port=5433;Database=JalapenoCloud;User Id=jalapeno;Password=jalapeno241187;Protocol=3;Pooling=true;MinPoolSize=1;MaxPoolSize=20;Timeout=20;ConnectionLifeTime=60;CommandTimeout=60;SSL=false;SslMode=Disable;"/>
+  </connectionStrings>
+  <!--
+    For a description of web.config changes for .NET 4.5 see http://go.microsoft.com/fwlink/?LinkId=235367.
+
+    The following attributes can be set on the <httpRuntime> tag.
+      <system.Web>
+        <httpRuntime targetFramework="4.5" />
+      </system.Web>
+  -->
+  <system.web>
+    <compilation debug="true" targetFramework="4.5">
+      <assemblies>
+        <add assembly="System.Data.Entity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
+      </assemblies>
+    </compilation>
+    <pages controlRenderingCompatibilityVersion="4.0"/>
+  </system.web>
+  <system.serviceModel>
+    <services>
+      <service name="JalapenoCloud.Api.AntispamService" behaviorConfiguration="DefaultBehavior">
+        <endpoint behaviorConfiguration="restfulBehavior"
+                  binding="webHttpBinding" bindingConfiguration="WebBinding"
+                  contract="JalapenoCloud.Api.IAntispamService"/>
+        <host>
+          <baseAddresses>
+            <add baseAddress="http://localhost/AntispamService.svc"/>
+          </baseAddresses>
+        </host>
+      </service>
+    </services>
+    <behaviors>
+      <endpointBehaviors>
+        <behavior name="restfulBehavior">
+          <webHttp/>
+        </behavior>
+      </endpointBehaviors>
+      <serviceBehaviors>
+        <behavior name="DefaultBehavior">
+          <serviceMetadata httpGetEnabled="true"/>
+          <serviceDebug includeExceptionDetailInFaults="true" httpHelpPageEnabled="True" />
+        </behavior>
+      </serviceBehaviors>
+    </behaviors>
+    <bindings>
+      <webHttpBinding>
+        <binding name="WebBinding" closeTimeout="00:00:30" openTimeout="00:00:20"
+                 receiveTimeout="00:00:15" sendTimeout="00:00:15"
+                 maxBufferSize="4096" maxReceivedMessageSize="4096">
+        </binding>
+      </webHttpBinding>
+    </bindings>
+    <serviceHostingEnvironment multipleSiteBindingsEnabled="true"/>
+  </system.serviceModel>
+  <system.webServer>
+    <modules runAllManagedModulesForAllRequests="true"/>
+  </system.webServer>
+</configuration>
